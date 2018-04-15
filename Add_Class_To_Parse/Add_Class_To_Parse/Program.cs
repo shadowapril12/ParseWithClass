@@ -98,20 +98,12 @@ namespace Add_Class_To_Parse
             int num = Num(s, ref i);
 
             while (i < s.Length)
-            {
-                ///Если индекс содержит знак восклицания, то выполняется функция,
-                ///возвращающая значение факториала
-                if (s[i] == '!')
-                {
-                    int facIdx = i - 1;
-                    num = CalcFactorial(int.Parse(s[facIdx] + ""));
-                    i++;
-                }
-                else if (s[i] == '*')
+            {               
+                if (s[i] == '*')
                 {
                     i++;
                     //Num - метод для считывания числа из строки
-                    int b = Num(s, ref i);
+                    int b = Num(s, ref i); 
                     num *= b;
                 }
                 else if (s[i] == '/')
@@ -180,8 +172,20 @@ namespace Add_Class_To_Parse
             {
                 buff += s[i];
             }
-
-            return Convert.ToInt32(buff);
+            ///Если индекс меньше длинны строки и символ под этим индексом, является знаком восклицания,
+            ///то вычисляем факториал
+            if(i < s.Length && s[i] == '!')
+            {
+                int facIdx = i - 1;
+                int fac = CalcFactorial(Convert.ToInt32(buff + ""));
+                i++;
+                return fac;
+            }
+            else
+            {
+                return Convert.ToInt32(buff);
+            }
+              
         }
 
     }
