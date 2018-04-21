@@ -8,11 +8,15 @@ namespace Add_Class_To_Parse
     {
         //begin - время начала вычисления выражения
         private DateTime begin;
+
         //end - время окончания вычисления выражения
         private DateTime end;
+
         //duration - продолжительночть вычисления выражения
         public TimeSpan duration;
-        int operCount;
+
+        //Счетчик количества операций
+        public int operCount;
 
         /// <summary>
         /// Данный метод переопределен для установки начального времени вычисления выражения
@@ -77,6 +81,7 @@ namespace Add_Class_To_Parse
             {
                 if (res[index] == '*')
                 {
+
                     index++;
                     //Num - метод для считывания числа из строки
                     int b = Num();
@@ -88,6 +93,9 @@ namespace Add_Class_To_Parse
                     }
 
                     num *= b;
+
+
+
                 }
                 else if (res[index] == '/')
                 {
